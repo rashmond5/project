@@ -1,0 +1,295 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+  },
+}
+ 24 changes: 24 additions & 0 deletions24  
+client/.gitignore
+@@ -0,0 +1,24 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+ 8 changes: 8 additions & 0 deletions8  
+client/README.md
+@@ -0,0 +1,8 @@
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ 13 changes: 13 additions & 0 deletions13  
+client/index.html
+@@ -0,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+ 3,563 changes: 3,563 additions & 0 deletions3,563  
+client/package-lock.json
+Large diffs are not rendered by default.
+
+ 27 changes: 27 additions & 0 deletions27  
+client/package.json
+@@ -0,0 +1,27 @@
+{
+  "name": "client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "vite": "^4.4.5"
+  }
+}
+ 1 change: 1 addition & 0 deletions1  
+client/public/vite.svg
+
+ 39 changes: 39 additions & 0 deletions39  
+client/src/App.css
+@@ -0,0 +1,39 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+input, 
+button, 
+select{
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.signup, .login{
+  width: 25%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.4);
+}
+button{
+  background-color: purple;
+  border: 0;
+  font-size: 1.1em;
+  color: floralwhite;
+  cursor: pointer;
+}
+h2{
+  text-align: center;
+  margin-bottom: 20px;
+}
+p{
+  text-align: center;
+}
+ 19 changes: 19 additions & 0 deletions19  
+client/src/App.jsx
+@@ -0,0 +1,19 @@
+import Signup from "./components/Signup";
+import { Routes, Route } from 'react-router-dom';
+
+//import App.css
+import './App.css';
+import Login from "./components/Login";
+
+const App = () => {
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </div>
+  )
+}
+
+export default App
+ 1 change: 1 addition & 0 deletions1  
+client/src/assets/react.svg
+
+ 25 changes: 25 additions & 0 deletions25  
+client/src/components/Login.jsx
+@@ -0,0 +1,25 @@
+import { Link } from 'react-router-dom';
+
+const Login = () => {
+    return (
+        <div className="login">
+            <div className="title">
+                <h2>LogIn</h2>
+            </div>
+                <form>
+                    <div className="email">
+                        <input type="email" placeholder="Enter Email........" />
+                    </div>
+                    <div className="password">
+                        <input type="password" placeholder="Enter Password........." />
+                    </div>
+                    <div className="submit_handler">
+                        <button type="submit">LogIn</button>
+                        <p>Do not have an account? <Link to="/">signup</Link></p>
+                    </div>
+                </form>
+            </div>
+    )
+}
+
+export default Login;
+ 58 changes: 58 additions & 0 deletions58  
+client/src/components/Signup.jsx
+@@ -0,0 +1,58 @@
+import { useState } from "react";
+import { Link } from 'react-router-dom';
+
+const Signup = () => {
+    const [form_data, set_form_data] = useState({
+        username: '',
+        email: '',
+        password: '',
+        confirm_password: '',
+        type: ''
+    });
+
+    const onChange = (e) => {
+        set_form_data({ ...form_data, [e.target.name]: e.target.value });
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const { username, email, password, confirm_password } = form_data;
+
+        if (username === '' || email === '' || confirm_password === '' || password === '') return;
+    }
+
+    return (
+        <div className="signup">
+            <div className="title">
+                <h2>Sign Up</h2>
+            </div>
+            <form onSubmit={onSubmit}>
+                <div className="username">
+                    <input type="text" value={form_data.username} name="username" onChange={onChange} placeholder="Enter Username......" />
+                </div>
+                <div className="email">
+                    <input type="email" value={form_data.email} name="email" onChange={onChange}  placeholder="Enter Email........" />
+                </div>
+                <div className="password">
+                    <input type="password" value={form_data.password} name="password" onChange={onChange}  placeholder="Enter Password........." />
+                </div>
+                <div className="confirm_password">
+                    <input type="password" value={form_data.confirm_password} name="confirm_password" onChange={onChange}  placeholder="Confirm Password........" />
+                </div>
+                <div className="type_login">
+                    <select name="type" value={form_data.type} onChange={onChange}>
+                        <option value="user" key="user">user</option>
+                        <option value="admin" key="admin">admin</option>
+                    </select>
+                </div>
+                <div className="submit_handler">
+                    <button type="submit">SignUp</button>
+                    <p>Already have an account? <Link to="/login">login</Link></p>
+                </div>
+            </form>
+        </div>
+    )
+}
+
+export default Signup;
+ 12 changes: 12 additions & 0 deletions12  
+client/src/main.jsx
+@@ -0,0 +1,12 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import { BrowserRouter } from 'react-router-dom'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+)
+ 10 changes: 10 additions & 0 deletions10  
+client/vite.config.js
+@@ -0,0 +1,10 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000
+  }
+})
