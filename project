@@ -18,9 +18,7 @@ module.exports = {
     ],
   },
 }
- 24 changes: 24 additions & 0 deletions24  
-client/.gitignore
-@@ -0,0 +1,24 @@
+ 
 # Logs
 logs
 *.log
@@ -50,15 +48,12 @@ client/README.md
 @@ -0,0 +1,8 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
- 13 changes: 13 additions & 0 deletions13  
-client/index.html
-@@ -0,0 +1,13 @@
+ 
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -76,7 +71,7 @@ client/index.html
 client/package-lock.json
 Large diffs are not rendered by default.
 
- 27 changes: 27 additions & 0 deletions27  
+
 client/package.json
 @@ -0,0 +1,27 @@
 {
@@ -151,7 +146,7 @@ h2{
 p{
   text-align: center;
 }
- 19 changes: 19 additions & 0 deletions19  
+  
 client/src/App.jsx
 @@ -0,0 +1,19 @@
 import Signup from "./components/Signup";
@@ -173,10 +168,10 @@ const App = () => {
 }
 
 export default App
- 1 change: 1 addition & 0 deletions1  
+
 client/src/assets/react.svg
 
- 25 changes: 25 additions & 0 deletions25  
+ 
 client/src/components/Login.jsx
 @@ -0,0 +1,25 @@
 import { Link } from 'react-router-dom';
@@ -265,9 +260,9 @@ const Signup = () => {
 }
 
 export default Signup;
- 12 changes: 12 additions & 0 deletions12  
+
 client/src/main.jsx
-@@ -0,0 +1,12 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
